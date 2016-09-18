@@ -114,22 +114,28 @@ When you call "niceScroll" you can pass some parameters to custom visual aspects
 
 ```javascript
 $("#thisdiv").niceScroll({
-    cursorcolor: "#424242", // change cursor color in hex
-    cursoropacitymin: 0, // change opacity when cursor is inactive (scrollabar "hidden" state), range from 1 to 0
+    cursorcolor: "#424242", // change cursor color in hex 十六进制改变光标颜色，默认值是“＃000000” 
+    cursoropacitymin: 0, // change opacity when cursor is inactive (scrollabar "hidden" state), range from 1 to 0 //改变不透明度非常光标处于非活动状态（scrollabar“隐藏”状态），范围从1到0, 默认为0（隐藏） 
     cursoropacitymax: 1, // change opacity when cursor is active (scrollabar "visible" state), range from 1 to 0
-    cursorwidth: "5px", // cursor width in pixel (you can also write "5px")
-    cursorborder: "1px solid #fff", // css definition for cursor border
-    cursorborderradius: "5px", // border radius in pixel for cursor
-    zindex: "auto" | <number>, // change z-index for scrollbar div
-    scrollspeed: 60, // scrolling speed
-    mousescrollstep: 40, // scrolling speed with mouse wheel (pixel)
+    //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0，默认值是1（完全不透明）  
+    cursorwidth: "5px", // cursor width in pixel (you can also write "5px") 像素光标的宽度，默认值为5
+    cursorborder: "1px solid #fff", // css definition for cursor border 游标边框css定义，默认为“1px的固体＃FFF” 
+    cursorborderradius: "5px", // border radius in pixel for cursor 以像素为光标边界半径
+    zindex: "auto" | <number>, // change z-index for scrollbar div 改变z-index值的滚动条的div，默认值是9999 
+    scrollspeed: 60, // scrolling speed 滚动速度，默认值为60 
+    mousescrollstep: 40, // scrolling speed with mouse wheel (pixel) 高速滚动鼠标滚轮，默认值是40（像素） 
     touchbehavior: false, // enable cursor-drag scrolling like touch devices in desktop computer
-    hwacceleration: true, // use hardware accelerated scroll when supported
-    boxzoom: false, // enable zoom for box content
-    dblclickzoom: true, // (only when boxzoom=true) zoom activated when double click on box
+    //使光标拖动滚动像在台式电脑触摸设备（默认：false） 
+    hwacceleration: true, // use hardware accelerated scroll when supported 使用硬件加速滚动支持的时候（默认：true） 
+    boxzoom: false, // enable zoom for box content 使变焦框中的内容（默认：false）
+    dblclickzoom: true, // (only when boxzoom=true) zoom activated when double click on box 
+    //（仅当boxzoom = TRUE）变焦激活时，双击对话框（默认：true） 
     gesturezoom: true, // (only when boxzoom=true and with touch devices) zoom activated when pinch out/in on box
+    //（仅当boxzoom =真实，使用触摸设备）上缩放框激活时，间距输出/输入（默认：true） 
     grabcursorenabled: true // (only when touchbehavior=true) display "grab" icon
+    //显示“抢”图标的div touchbehavior = true时，（默认：true） 
     autohidemode: true, // how hide the scrollbar works, possible values: 
+    //如何隐藏滚动条的作品，真=默认/“光标”=只进游标隐藏/ false =不隐藏背景，CSS改变轨道的背景下，默认为“” 
       true | // hide when no scrolling
       "cursor" | // only cursor hidden
       false | // do not hide,
@@ -137,35 +143,46 @@ $("#thisdiv").niceScroll({
       "hidden" | // hide always
       "scroll", // show only on scroll          
     background: "", // change css for rail background
-    iframeautoresize: true, // autoresize iframe on load event
-    cursorminheight: 32, // set the minimum cursor height (pixel)
+    iframeautoresize: true, // autoresize iframe on load event 在加载事件AUTORESIZE的iframe（默认：true） 
+    cursorminheight: 32, // set the minimum cursor height (pixel) 设置在像素的最小光标高度（默认值：20） 
     preservenativescrolling: true, // you can scroll native scrollable areas with mouse, bubbling mouse wheel event
-    railoffset: false, // you can add offset top/left for rail position
+    //您可以滚动本机可滚动区域用鼠标，冒泡鼠标滚轮事件（默认：true） 
+    railoffset: false, // you can add offset top/left for rail position 
+    //您可以添加抵消顶部/左边的轨道位置（默认：false） 
     bouncescroll: false, // (only hw accell) enable scroll bouncing at the end of content as mobile-like 
+    //使滚动弹跳在内容结尾作为移动像（仅HW ACCELL）（默认：false） 
     spacebarenabled: true, // enable page down scrolling when space bar has pressed
+    //使向下翻页时，空格键已经按下滚动（默认：true） 
     railpadding: { top: 0, right: 0, left: 0, bottom: 0 }, // set padding for rail bar
+    //设置滚动轨道的填充（默认值：{顶：0，右：0，左：0，下：0}） 
     disableoutline: true, // for chrome browser, disable outline (orange highlight) when selecting a div with nicescroll
-    horizrailenabled: true, // nicescroll can manage horizontal scroll
-    railalign: right, // alignment of vertical rail
-    railvalign: bottom, // alignment of horizontal rail
-    enabletranslate3d: true, // nicescroll can use css translate to scroll content
-    enablemousewheel: true, // nicescroll can manage mouse wheel events
-    enablekeyboard: true, // nicescroll can manage keyboard events
-    smoothscroll: true, // scroll with ease movement
-    sensitiverail: true, // click on rail make a scroll
+    //对于chrome浏览器，停用大纲（橙色hightlight）选择具有nicescroll一个div（默认： true）时， 
+    horizrailenabled: true, // nicescroll can manage horizontal scroll nicescroll可以管理水平滚动（默认：true） 
+    railalign: right, // alignment of vertical rail 取向垂直导轨（defaul：“右”） 
+    railvalign: bottom, // alignment of horizontal rail 对齐水平导轨（defaul：“底部”） 
+    enabletranslate3d: true, // nicescroll can use css translate to scroll content  //nicescroll可以使用CSS转换使内容区域滚动（默认：true） 
+    enablemousewheel: true, // nicescroll can manage mouse wheel events nicescroll可以管理的鼠标滚轮事件（默认：true） 
+    enablekeyboard: true, // nicescroll can manage keyboard events nicescroll可以管理键盘事件（默认：true） 
+    smoothscroll: true, // scroll with ease movement 平滑滚动（默认：true） 
+    sensitiverail: true, // click on rail make a scroll 点击轨道时进行滚动（默认：true）
     enablemouselockapi: true, // can use mouse caption lock API (same issue on object dragging)
-    cursorfixedheight: false, // set fixed height for cursor in pixel
-    hidecursordelay: 400, // set the delay in microseconds to fading out scrollbars
+    //可以用鼠标说明锁的API（对象拖动同样的问题）（默认：true） 
+    cursorfixedheight: false, // set fixed height for cursor in pixel 用于光标以像素设置固定的高度（默认：false） 
+    hidecursordelay: 400, // set the delay in microseconds to fading out scrollbars //设置在微秒淡出滚动条的延迟时间（默认值：400） 
     directionlockdeadzone: 6, // dead zone in pixels for direction lock activation
+    //在对方向锁定激活像素死区（默认值：6）
     nativeparentscrolling: true, // detect bottom of content and let parent to scroll, as native scroll does
+    //检测内容底部，并让父级容器来滚动，像原生滚动那样（默认：true）
     enablescrollonselection: true, // enable auto-scrolling of content when selection text
-    cursordragspeed: 0.3, // speed of selection when dragged with cursor
-    rtlmode: "auto", // horizontal div scrolling starts at left side
-    cursordragontouch: false, // drag cursor in touch / touchbehavior mode also
+    //启用自动滚动的内容时，选择文本（默认：true）
+    cursordragspeed: 0.3, // speed of selection when dragged with cursor 拖动鼠标选择的速度
+    rtlmode: "auto", // horizontal div scrolling starts at left side 起点在右侧的水平滚动
+    cursordragontouch: false, // drag cursor in touch / touchbehavior mode also 触摸设备的拖动
     oneaxismousemode: "auto", // it permits horizontal scrolling with mousewheel on horizontal only content, if false (vertical-only) mousewheel don't scroll horizontally, if value is auto detects two-axis mouse
-    scriptpath: "" // define custom path for boxmode icons ("" => same script path)
-    preventmultitouchscrolling: true // prevent scrolling on multitouch events
-    disablemutationobserver: false // force MutationObserver disabled
+    //值为true的时候允许通过鼠标滚轮使内容水平滚动，值为false的时候只允许滚轮垂直滚动内容，值为auto可以同时探测两个坐标维度
+    scriptpath: "" // define custom path for boxmode icons ("" => same script path)定义自定义的盒模型图标，为空表示相同路径
+    preventmultitouchscrolling: true // prevent scrolling on multitouch events 多点触控时，阻止滚动
+    disablemutationobserver: false // force MutationObserver disabled  强制变动观察器不可用
 });
 ```
 
